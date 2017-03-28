@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{longtable}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+
+\newcommand{\myline}{\end{description}\hrulefill\begin{description}}
+\newcommand{\be}{\mbox{}\begin{itemize}}
+\newcommand{\ee}{\end{itemize}}
+\newcommand{\bop}
+           {\href{http://www.people.vcu.edu/~rhammack/BookOfProof/}
+             {{\em      Book    of Proof}}}
+\newcommand{\spl}
+           {\href{http://www.scheme.com/tspl3/}
+             {{\em The Scheme Programming Language}}}
+\newcommand{\sicp}           
+           {\href{https://mitpress.mit.edu/sicp/}
+             {{\em Structure and Interpretation of Computer Programs}}}
+\newcommand{\theory}
+           {\href{http://cg.scs.carleton.ca/~michiel/TheoryOfComputation/}
+             {{\em The Theory of Computation}}}
+
+\newcommand{\automata}
+           {\href{http://users.utu.fi/jkari/automata/}
+             {{\em Automata and Formal Languages Lecture Notes}}}
+           
+\begin{document}
+\centerline{\Large\bf CSCI 241: Data Structures}
+\centerline{\large\bf Syllabus, Spring, 2017}
+
+
+\begin{description}
+
+
+\item[Instructor:] Geoffrey Matthews\\
+{\em Email:} {\tt geoffrey dot matthews at wwu dot edu}\\
+{\em Office hours:} MTWF 10:00-10:50, CF 469
+
+
+\item[Lectures:] MTWF 11:00-11:50, CF 227
+
+
+\item[Catalog copy:] Design and implementation of hash tables, general
+  trees, search trees, balanced trees and graphs. Comparison of
+  sorting algorithms. Demonstration of the use of data structures in
+  various applications. Evaluation of the best data structure for a
+  particular task. Programming is required in implementation of
+  concepts.
+
+\item[Goals:]  On completion of this course, students will demonstrate:
+\begin{itemize}
+\item
+  Basic understanding of classic data structures including trees, hash
+  tables and graphs. 
+\item Basic understanding of various sorting algorithms.
+\item Thorough understanding of recursion in the definition of and
+  operations on these data structures. 
+\item The ability to select and design the proper data structures to
+  problems requiring complex data structures. 
+\item The ability to select the proper sorting algorithms for a
+  problem. 
+\item The ability to make judgments about the selected data structures
+  for a problem. 
+\item The ability to implement the introduced data structures and
+  sorting algorithms. 
+
+\end{itemize}
+
+\item[Websites:]\mbox{}
+\begin{itemize}
+  \item For class materials:
+    \url{https://github.com/geofmatthews/csci241} 
+  \item For turning in homework and grading:
+    \url{https://wwu.instructure.com/}  
+\end{itemize}
+
+\item[Texts:] The following texts will be used as resources, but no
+  problems will be assigned from either book.  Online reading will
+  also be assigned as topics come up.
+\begin{itemize}
+\item {\em Building Java Programs: A Back to Basics Approach, 4th
+  edition}, Reges and Stepp.
+
+  You may already have this book from CSCI 145.  Access to online
+  content associated with the book is not required.  This is an
+  excellent introduction to Java, but does not cover all the material
+  for CSCI 241.
+
+  \item {\em Introduction to Algorithms, 3rd edition}, Cormen {\em et
+    al.}
+
+    You will need this book for CSCI 305 and CSCI 405, and it is an
+    excellent resource on algorithms and advanced data structures.
+    
+\end{itemize}
+\item[Software:] The labs already have Oracle's Java Development Kit
+  (JDK) 7 as well as jGrasp (and other IDEs) installed for both
+  Windows and Linux.  If you would like to work on your own computer,
+  you are welcome to download and install jGrasp
+  \url{http://www.jgrasp.org/}.
+
+\item[Programming assignments:] Programs must be turned in on canvas.
+  Specifications must be followed exactly (do not rename classes or
+  procedures because you think your names are better, do not change
+  the signature of the methods, {\em etc.}).
+  No late work will be accepted.  It is the student's responsibility
+  to make sure the {\em correct} file is submitted by midnight of
+  the due date.
+
+
+\item[Quizzes:]  There will be a short quiz every Friday except the
+  first and last weeks of class.  That means every Friday in April and
+  May.  Quizzes will be closed book.
+
+\item[Final exam:] Monday, June 5, 8:00-10:00am.
+  
+The final exam is closed book, with the exception that you may consult
+two pieces of paper during the exam.  You may write or print whatever
+you wish on each side of these pieces of paper.
+
+\item[Emergencies:] If you have to miss an assignment deadline or a
+  quiz because of a medical or other emergency notify me as soon as
+  possible and we will negotiate a substitute.  If you know in advance
+  that you have to miss a deadline, let me know at least a week in
+  advance.
+
+\item[Grading:] Students will be graded on the three programming
+  assignments, the eight quizzes, some in-class pop quizzes (which are
+  unscheduled and which we will solve together in class), and the
+  final exam.
+
+Grades will be assigned based on scores as shown.  At the discretion
+of the instructor, scores may be scaled.  Awarding $\pm$ is at the
+discretion of the instructor.
+
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+Program 1 & Program 2 & Program 3 & Quizzes & Pop quizzes & Final \\\hline
+10\% & 20\% & 20\% & 20\% & 5\% & 25\% \\\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+\% & 90-100 & 80-89 & 70-79 & 60-69 & 0-60\\\hline
+Grade & A & B & C & D & F\\\hline
+\end{tabular}
+
+
+\item[Academic dishonesty:] Please read Appendix D of WWU's Catalog on
+  Academic Dishonesty.  It is available online at
+  \url{http://catalog.wwu.edu}.
+
+  Unless specified otherwise, all work for this course is meant to
+  be done {\bf individually.}  The work that you turn in for a grade
+  must be completely your own, or you will be guilty of academic
+  dishonesty and could receive an F for the course.
+
+  However, it can be a valiable learning experience to discuss
+  work with your fellow students, and this is encouraged.
+  However, after working with a colleague, {\bf you may not keep any
+    paper or electronic copies of anything you produced together!}
+  You may only keep your memories.  In particular, this means that
+  {\bf you may not ask for or give help while sitting in front of a
+    computer where the assignment is open!}  Also, {\bf you may not
+    use anything a colleague has emailed to you!}  Delete the email
+  and do not save a copy.
+
+  To help understand what I mean, remember the {\fbox{\bf Long Term
+    Memory Rule}}.  You may discuss, sketch, write things down, use
+  your computers, whatever, but after you are done working with your
+  fellow students all files must be deleted, whiteboards erased, and
+  all papers you created must be destroyed.  You should then watch a
+  rerun of {\em the Simpson's}, play a game of ping-pong, take a walk,
+  or something else for half an hour. After this you can go back to
+  your assignment (alone) and use the knowledge you have now gained.
+
+  It is very easy for us to detect copied assignments.  Please do not
+  put us in a situation where we have to fail you for plagiarism.
+
+\item[Topics:] Topics may change slightly as the course progresses.
+\begin{itemize}  
+\item Analysis of algorithms (informal)
+\item Big-O notation
+\item Sorting
+  \begin{itemize}
+  \item Insertion sort
+\item Merge sort
+\item Quick sort
+\item Radix sort
+  \end{itemize}
+\item Graphs
+  \begin{itemize}
+\item Graph terminology
+\item Graph data structures
+\item Topological sort
+\item Shortest Paths through a DAG algorithm
+\item Breadth-first and depth-first traversals
+\item Dijkstra's 
+\item Prim's
+\item PageRank
+  \end{itemize}
+\item Trees
+  \begin{itemize}
+\item Tree terminology
+\item Tree data structures
+\item Expression trees
+\item Tree traversals (using expression trees and *-fix notation as a motivating example)
+\item Coding trees and huffman trees
+\item BSTs
+\item AVL trees
+\item Splay trees
+\end{itemize}
+\item Heaps
+\begin{itemize}
+\item Heap sort
+\end{itemize}
+\item Hash tables
+\begin{itemize}
+    \item Separate chaining
+    \item Rehashing
+    \item Open addressing
+    \item Hash functions
+\end{itemize}
+\end{itemize}
+\end{description}
+
+
+\end{document}

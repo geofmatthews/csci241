@@ -1,0 +1,430 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{longtable}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+
+\newcommand{\myline}{\end{description}\hrulefill\begin{description}}
+\newcommand{\be}{\mbox{}\begin{itemize}}
+\newcommand{\ee}{\end{itemize}}
+\newcommand{\bop}
+           {\href{http://www.people.vcu.edu/~rhammack/BookOfProof/}
+             {{\em      Book    of Proof}}}
+\newcommand{\spl}
+           {\href{http://www.scheme.com/tspl3/}
+             {{\em The Scheme Programming Language}}}
+\newcommand{\sicp}           
+           {\href{https://mitpress.mit.edu/sicp/}
+             {{\em Structure and Interpretation of Computer Programs}}}
+\newcommand{\theory}
+           {\href{http://cg.scs.carleton.ca/~michiel/TheoryOfComputation/}
+             {{\em The Theory of Computation}}}
+
+\newcommand{\automata}
+           {\href{http://users.utu.fi/jkari/automata/}
+             {{\em Automata and Formal Languages Lecture Notes}}}
+           
+\begin{document}
+\centerline{\Large\bf CSCI 301: Formal Languages and Functional Programming}
+\centerline{\large\bf Syllabus, Winter, 2017}
+
+
+\begin{description}
+
+
+\item[Instructor:] Geoffrey Matthews\\
+{\em Email:} {\tt geoffrey dot matthews at wwu dot edu}\\
+{\em Office hours:} MTWF 10:00-10:50, CF 469
+
+
+\item[Lectures:] \mbox{}\\
+\begin{tabular}{ccc}
+  CRN & Time & Room \\\hline
+  11650, 11652 & MTWF 9:00-9:50 & CF 225 \\
+  12762, 12763 & MTWF 11:00-11:50 & AH 014 
+  \end{tabular}
+
+\item[Lab sessions:]\mbox{}\\
+  \hfill
+  \begin{tabular}{cccc}
+    CRN & Time & Room & TA\\\hline
+  11650 & T 10:00-11:50 & CF 414 & Katie Hursch\\
+  11652 & W 10:00-11:50 & CF 414 & Ellyn Ayton\\
+  12762 & T 12:00-01:50 & CF 416 & Elizabeth Brooks \\
+  12763 & W 12:00-01:50 & CF 416 & Elizabeth Brooks \\
+  \end{tabular}
+  \hfill
+  \mbox{}
+  
+You may attend the session you did not sign up for on a space
+available basis.  There are no labs the first and last weeks of class,
+and the week of the midterm.
+
+\item[Catalog copy:] Introduction to discrete structures important to
+  computer science, including sets, trees, functions, and
+  relations. Proof techniques. Introduction to the formal language
+  classes and their machines, including regular languages and finite
+  automata, context free languages and pushdown automata. Turing
+  machines and computability will be introduced. Programming using a
+  functional language is required in the implementation of
+  concepts. Includes lab.
+
+\item[Goals:]  On completion of this course, students will demonstrate:
+\begin{enumerate}
+\item
+Thorough understanding of the mathematical definitions of concepts
+important to computer science, including sets, tuples, lists, strings,
+languages, graphs, trees, functions and relations
+\item
+The ability to prove basic theorems involving these
+mathematical concepts
+\item
+The ability to employ effectively the functional programming style in a
+functional programming language
+\item
+Solid understanding of fundamental classes of languages, including
+regular and context free, and their corresponding machines
+\item
+Basic understanding of Turing machines and computability
+\item
+Basic understanding of important algorithms, including conversion of
+finite automata to different forms, conversion of grammars to machines
+\item
+Basic understanding of LL(k) and LR(K) grammars and the parsing
+techniques used for those grammars
+\end{enumerate}
+
+\item[Websites:]\mbox{}
+\begin{itemize}
+  \item For class materials: \url{https://github.com/geofmatthews/csci301}
+  \item For turning in homework and
+    grading: \url{https://wwu.instructure.com/} 
+\end{itemize}
+
+
+\item[Goals:] This class is an introduction to computer science {\em
+    theory}.  This is exactly parallel to the distinction between
+  theoretical physics and applied physics.  We will use simplified,
+  abstract, ideal mathematical models of computers, so that we can
+  study the theoretical limits of what they can accomplish.  We will
+  begin studying the basic mathematics we need, and then study
+  mathematical models of computers of increasing complexity and power.
+  Two classes of computers, finite state automata and push-down
+  automata, also form the basis of powerful programming paradigms
+  useful in a variety of situations.
+
+  We will also study the functional programming language {\em Scheme}.
+  Its simplicity, power, and mathematical elegance will inform our
+  study of computers in the abstract, and also teach us new styles of
+  programming.
+
+\item[Texts:] \mbox{}
+  \begin{description}
+    \item[Math:] \mbox{}
+\begin{itemize}
+\item \url{http://www.people.vcu.edu/~rhammack/BookOfProof/}
+\item \url{http://cg.scs.carleton.ca/~michiel/TheoryOfComputation/}
+\item  \url{http://users.utu.fi/jkari/automata/} Lecture notes.
+\item Other readings and handouts as they come up.
+\end{itemize}
+\item[Scheme:] \mbox{}
+  \begin{itemize}
+  \item  \url{http://www.scheme.com/tspl3/}  Note: Use the 3rd edition
+  and do {\em not} use the
+  4th edition of this book.  Our software is based on R5RS scheme and
+  the 3rd edition covers this.  The 4th edition is based on R6RS scheme.
+  \item The {\em help desk} within Racket leads to documentation on
+    the implementation.
+  \item  Optional:  \url{http://mitpress.mit.edu/sicp/}
+\item Optional: \url{http://ds26gte.github.io/tyscheme/} 
+\item Other readings and handouts as they come up.
+  \end{itemize}
+  \end{description}
+
+\item[Software:] {\em DrRacket}, available here: 
+\url{http://racket-lang.org/}
+
+\item[Exams:] A midterm and a final, according to the schedule below.
+  The final will be cumulative.
+
+  Exams are closed book, with the exception that you may consult two
+  pieces of paper during the exam.  You may write or print whatever
+  you wish on these pieces of paper.
+
+\item[Laboratory exercises:]
+Laboratory exercises  will be handed out every week.
+Each lab is due by midnight Tuesday of the following week.
+
+\item[Math work:] Math assignments will be handed out as they come up
+  during the quarter.  These assignments must be formatted with the
+  \LaTeX\ technical typesetting system and submitted online.
+
+  Pedagogically, it is important that you do as much independent work
+  as possible.  The assigned homework represents a minimum, but there
+  are many exercises in the books and online to get more practice at
+  the math involved.
+
+  I will attempt to grade the homework in a timely fashion.  This may
+  necessitate grading only a sample of the problems submitted.
+
+  Points will be awarded to each assignment based on its difficulty.
+  Note that there may be an assignment due during dead week.
+
+\item[Assessment and grades:]
+
+Your grade will be based on the math homework, labs, and the two
+exams. Weights are as follows.  
+
+Please note that Canvas sometimes adds up raw scores and gives you a
+percentage.  This usually does not reflect your weighted score for the
+class.
+
+Grades will be assigned based on scores as shown.  At the discretion
+of the instructor, scores may be scaled.  Awarding $\pm$ is at the
+discretion of the instructor.
+
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+Homework & Labs & Midterm & Final\\\hline
+25\% & 25\%  & 20\% & 30\% \\\hline
+\end{tabular}\hfill
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+\% & 90-100 & 80-89 & 70-79 & 60-69 & 0-60\\\hline
+Grade & A & B & C & D & F\\\hline
+\end{tabular}
+
+\item[Late work:] Submissions are due before midnight of the due
+  date. Anything turned in up to midnight of the following day will be
+  accepted with a 25\% penalty. Anything turned in up to midnight of
+  the second day after the due date will be accepted with a 50\%
+  penalty.  Anything more than 48 hours late will not be accepted.  It
+  is your responsibility to make sure all assignments are correctly
+  submitted.  If you have trouble submitting on Canvas, please contact
+  your TA or instructor immediately.
+
+\item[Lectures and Reading:] The amount of material covered in this
+  class is impossible to absorb with only four hours of lecture a
+  week.  It is essential that you go over the assigned readings at
+  least once before class discussion of that material, and attempt to
+  work some of the solved problems.
+
+  Many times, class lectures will consist of interactively solving
+  problems, with class participation.  Some of the concepts and ideas
+  necessary for solving these problems may not have been discussed
+  previously in lectures.  In order to participate actively in the
+  classroom discussion, you will have to read ahead.  Assigned
+  readings for each lecture are in the schedule, below.  Note that
+  this schedule may change as the quarter progresses.
+
+\item[Attendance policy:] Attendance is not required but strongly
+  recommended.  Studies show that regular attendance is highly
+  correlated with performance.  
+
+  You are responsible for all material covered in the lectures, books,
+  handouts, or other assigned reading.  If you miss a lecture, make
+  sure you get notes from other students and talk it over with them.
+
+  If you have an emergency for one of the exam days, notify me as soon
+  as possible.  I will handle each case individually and may, for
+  example, schedule a make-up exam, or adjust your remaining scores to
+  determine your grade.
+
+\item[Academic dishonesty:] Please read Appendix D of WWU's Catalog on
+  Academic Dishonesty.  It is available online at
+  \url{http://catalog.wwu.edu}.
+
+  Unless specified otherwise, all work for this course is meant to
+  be done {\bf individually.}  The work that you turn in for a grade
+  must be completely your own, or you will be guilty of academic
+  dishonesty and could receive an F for the course.
+
+  However, it can be a valiable learning experience to discuss
+  work with your fellow students, and this is encouraged.
+  However, after working with a colleague, {\bf you may not keep any
+    paper or electronic copies of anything you produced together!}
+  You may only keep your memories.  In particular, this means that
+  {\bf you may not ask for or give help while sitting in front of a
+    computer where the assignment is open!}  Also, {\bf you may not
+    use anything a colleague has emailed to you!}  Delete the email
+  and do not save a copy.
+
+  To help understand what I mean, remember the {\fbox{\bf Long Term
+    Memory Rule}}.  You may discuss, sketch, write things down, use
+  your computers, whatever, but after you are done working with your
+  fellow students all files must be deleted, whiteboards erased, and
+  all papers you created must be destroyed.  You should then watch a
+  rerun of {\em the Simpson's}, play a game of ping-pong, take a walk,
+  or something else for half an hour. After this you can go back to
+  your assignment (alone) and use the knowledge you have now gained.
+
+  It is very easy for experienced software developers like your
+  instructor and your TA to detect copied assignments.  Please do not
+  put us in a situation where we have to fail you for plagiarism.
+
+\end{description}
+
+  
+{\bf Schedule:}
+
+\begin{longtable}{ll}
+Wed, Jan 4:
+&   Introduction, explanation of syllabus, expectations of students.
+\\&   How to learn.
+\\&   \LaTeX
+\\
+Fri, Jan 6: 
+&  Introduction to Scheme and the Racket environment.
+\\& \spl, Chapters 1 and 2.
+\\ &  {\bf Lab 1 assigned.}
+\\\hline
+Mon, Jan 9:
+& Continue introduction to Scheme and Lab 1.
+\\&  Sets. \bop, Chapter 1.
+\\
+Tue, Jan 10:
+& Logic. \bop, Chapter  2.
+\\
+Wed, Jan 11:
+&  Counting, \bop, Chapter 3.
+\\
+Fri, Jan 13:
+& More Scheme. \sicp, Chapter 1.
+\\&  {\bf Lab 2 assigned.} 
+\\\hline
+Mon, Jan 16:&  MLK day, no classes.
+\\
+Tue, Jan 17:
+& {\bf Lab 1 due.}
+\\&  Direct proof, \bop Chapter 4.
+\\&   Contrapositive Proof, \bop, Chapter 5.
+\\
+Wed, Jan 18:
+& Proof by contradiction, \bop, Chapter 6.
+\\& Proving non-conditional statements. \bop, Chapter 7.
+\\
+Fri, Jan 20:
+& More Scheme.   \sicp, Chapter 2.
+\\&  Proofs involving sets, \bop, Chapter 8.
+\\& Disproof. \bop, Chapter 9.
+\\& {\bf Lab 3 assigned.}
+\\\hline
+Mon, Jan 23:
+& Mathematical induction.  \bop, Chapter 10.
+\\
+Tue, Jan 24:
+& {\bf Lab 2 due.}
+\\&  Relations and Functions.   \bop, Chapters 11, 12.
+\\
+Wed, Jan 25:
+& Cardinality of Sets.  \bop, Chapter 13.
+\\
+Fri, Jan 27:
+& {\bf Lab 4 assigned.}
+\\\hline
+Mon, Jan 30:
+& Deterministic finite automata.
+\\&\theory, 2.1, 2.2.
+\\&\automata,    2.1.
+\\
+Tue, Jan 31:
+& {\bf Lab 3 due.}
+\\& Nondeterministic finite automata.
+\\&\theory, 2.4, 2.5.
+\\&\automata, 2.2, 2.3.
+\\
+Wed, Feb 1:
+& Regular expressions, closure properties.
+\\&\theory, 2.7,   2.8.
+\\&\automata, 2.4, 2.6.
+\\&\url{http://cs.stackexchange.com/questions/2016/how-to-convert-finite-automata-to-regular-expressions}
+\\
+Fri, Feb 3: & Snow day.
+\\\hline
+No lab this week.
+\\
+Mon, Feb 6:
+& Snow day. No classes.
+\\
+Tue, Feb 7:
+& {\bf Lab 4 due.}
+\\ & Snow day.
+\\
+Wed, Feb 8:
+& The pumping lemma for regular languages.
+\\&\theory, 2.9.
+\\&\automata, 2.5.
+\\
+Fri, Feb 10:& The pumping lemma for regular languages.
+\\& {\bf Lab 5 assigned.}
+\\\hline
+Mon, Feb 13:
+& Context-free grammars.
+\\&\theory, 3.1, 3.2, 3.3.
+\\&\automata, 3.1,  3.2.
+\\
+Tue, Feb 14:
+& Review for midterm.
+\\
+Wed, Feb 15:
+& {\bf Midterm exam.}
+\\
+Fri, Feb 17:
+& {\bf Lab 6 assigned.}
+\\&Review midterm.
+\\\hline
+Mon, Feb 20:&  President's day, no classes.
+\\
+Tue, Feb 21:
+& Chomsky normal form.  \\&\theory, 3.4. \\&\automata, 3.3.
+\\
+Fri, Feb 24:
+& {\bf Lab 7 assigned.}
+\\& Pushdown automata. \\&\theory, 3.5, 3.6.  \\&\automata, 3.4.
+\\\hline
+Mon, Feb 27:
+& Equivalence of PDA and CFG.  LL parsing. \\&\theory, 3.7.
+\\
+Tue, Feb 28:
+& {\bf Lab 6 due.}
+\\& Pumping lemma for CFL.  \\&\theory, 3.8.  \\&\automata, 3.5.
+\\
+Wed, Mar 1:
+& Closure properties for CFL. \\&\automata, 3.6.
+\\& Decision algorithms for regular languages. \\&\automata, 2.7.
+\\& Decision algorithms for context free languages. \\&\automata, 3.7.
+\\
+Fri, Mar 3:
+\\& Turing machines.
+\\& \theory, 4.1, 4.2, 4.3, 4.4.
+\\& \automata, 4.1, 4.2, 4.3, 4.4.
+\\\hline
+No lab this week.
+\\
+Mon, Mar 6:
+& Decidability
+\\& \theory, 5.1, 5.2, 5.3.
+\\& \automata, 4.5, 4.6, 4.7.
+\\
+Tue, Mar 7:
+& {\bf Lab 7 due.}
+\\& Enumerability
+\\&\theory, 5.4, 5.5, 5.6, 5.7, 5.8.
+\\
+Wed, Mar 8:&  Review.
+\\
+Fri, Mar 10: & Review.
+\\\hline
+Tue, Mar 14: &  Final Exam, 11:00am lecture, 8:00-10:00am
+\\
+Thu, Mar 16: &  Final Exam, 9:00am lecture, 8:00-10:00am
+\end{longtable}
+
+
+
+\end{document}
