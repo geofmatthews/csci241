@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\begin{document}
+
+\Large
+
+\begin{Verbatim}[frame=single]
+  mergesort(A, p, r) {
+    if (p < r) {
+      q = floor((p + r)/2)
+      mergesort(A, p, q)
+      mergesort(A, q + 1, r)
+      merge(A, p, q, r)
+    }
+  }
+\end{Verbatim}
+
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+  2 & 8 & 9 & 3 & 7 & 8\\\hline
+  p &&q&&&r\\\hline
+\end{tabular}
+
+\begin{Verbatim}[frame=single]
+  merge(A, p, q, r) {
+    n1 = q - p + 1
+    n2 = r - q
+    let L[1..n1+1] and R[1..n2+1] be new arrays
+    for i = 1 to n1 {
+      L[i] = A[p + i - 1]
+    }
+    for j = 1 to n2 {
+      R[j] = A[q + j]
+    }
+    L[n1 + 1] = infinity
+    R[n2 + 1] = infinity
+    i = 1
+    j = 1
+    for k = p to r {
+      if L[i] <= R[j] {
+        A[k] = L[i]
+        i++
+      } else {
+        A[k] = R[j]
+        j++
+      }
+    }
+  }
+\end{Verbatim}
+
+\end{document}
+      

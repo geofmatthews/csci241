@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb,graphicx}
+\title{CSCI 241, Spring 2017, Project \#1}
+\author{Geoffrey Matthews}
+\begin{document}
+\maketitle
+
+\begin{description}
+\item[Due date:]
+\item[General coding instructions:]
+\item[Caesar ciphers:] Caesar ciphers are a simple way of enciphering
+  messages and form the basis of the secret decoder ring.
+  \
