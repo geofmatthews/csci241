@@ -9,7 +9,7 @@
 \centerline{\bf NOTE:  this is incomplete.}
 
 \begin{description}
-\item[Due date:]
+\item[Due date:]  April 28, midnight.
 \item[Caesar ciphers:]
 
   \begin{figure}
@@ -301,7 +301,9 @@ This only works for positive values of $z$, so we take the absolute
 value of our $z$ before calculating $\Phi(z)$.
 If this number, $\Phi(z)$, is greater than 0.95, then we have a
 significant match.  This means that a we probably have found our
-Caesar cipher.
+Caesar cipher.  To be conservative, we will only say that our guess is
+``good enough'' if {\em each} of the subclasses has a probability
+greater than 0.95 of being a Caesar cipher.
 
 Note that this brute force method to find the length of the keyword
 does not rely on Babbage's insight about repeated strings.  
@@ -309,10 +311,79 @@ does not rely on Babbage's insight about repeated strings.
 
 \item[Project:]  Write a Java program to automatically decipher a text
   enciphered with a Vigenere cipher using the ideas outlined here.
+  Follow the pseudocode given at the end of this document.  Note that
+  the input and output files are given specific names.  This will
+  enable us to test your programs without responding to any prompts.
 
-  Modules, procedures, data structures.
+  Use the table of English letter frequencies found in
+  Wikipedia: {\url{https://en.wikipedia.org/wiki/Letter_frequency}}
+
+
   
-\item[General coding instructions:]  Style requirements go here.
+\item[General coding instructions:]  Follow decent style
+  recommendations,
+  such as that found in your CSCI 145 book or in
+  \url{https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md}
+
+  \newpage
+  
+\item[Pseudocode:]\mbox{}
+
+\begin{Verbatim}[frame=single,label=Vigenere main]
+  // Initialize
+
+  Read ciphertext from file named "ciphertext.txt"
+  Convert ciphertext to upper alpha string: cipherletters
+  
+  // Try all possible key lengths:
+  keylen = 1
+  solved = false
+  while (not solved and keylen <= 100) {
+    
+    // Partition cipherletters into their equivalence classes:
+    assert classes[keylen] is an array of empty strings
+    for (letter = 0 .. length(cipherletters)-1) {
+      add cipherletters[letter] to classes[letter mod keylen]
+    }
+    
+    // Find best shift for each letter of the keyword
+    assert shifts[keylen] is an empty array of shifts and probabilities
+    for (letter = 0 .. keylen-1) {
+      shifts[letter] = bestShift(classes[letter])
+    }
+    
+    // If we've found a significantly different solution, exit loop
+    if (goodEnough(shifts)) {
+      solved = true
+    } else {
+      keylen++
+    }
+  }
+
+  // Output solution
+  print decipher(getKeyword(shifts), ciphertext) in file "plaintext.txt"
+\end{Verbatim}
+
+
+\begin{Verbatim}[frame=single,label=bestShift]
+  bestShift(letters) {
+    // Find frequency table of letters
+    assert frequencies[26] is a table of frequencies for the letters
+    
+    // Find SAD for each shift
+    assert sads[26] is array of SAD scores for each shift
+
+    // Find minimum SAD score in array
+    assert sadshift, sadvalue is smallest SAD  and shift
+
+    // Find significance of sadvalue
+    find mean and sd for other 25 values
+    find z-score for sadvalue
+    find probability of z-score
+
+    return sadshift, probability
+  }  
+\end{Verbatim}
 
 \end{description}
 \end{document}
