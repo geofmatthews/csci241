@@ -300,7 +300,7 @@ under the assumption of a normal distribution.
 This only works for positive values of $z$, so we take the absolute
 value of our $z$ before calculating $\Phi(z)$.
 If this number, $\Phi(z)$, is greater than 0.95, then we have a
-significant match.  This means that a we probably have found our
+significant match.  This means that we probably have found our
 Caesar cipher.  To be conservative, we will only say that our guess is
 ``good enough'' if {\em each} of the subclasses has a probability
 greater than 0.95 of being a Caesar cipher.
@@ -311,19 +311,40 @@ does not rely on Babbage's insight about repeated strings.
 
 \item[Project:]  Write a Java program to automatically decipher a text
   enciphered with a Vigenere cipher using the ideas outlined here.
-  Follow the pseudocode given at the end of this document.  Note that
-  the input and output files are given specific names.  This will
+  Follow the pseudocode given at the end of this document.
+
+  Note that
+  the input and output files are given specific names: {\tt
+    ciphertext.txt} and {\tt plaintext.txt}.  This will
   enable us to test your programs without responding to any prompts.
+
+  The case (upper or lower) of the input letter should be preserved.
+  
+  All letters in the text that are not alphabetic characters should
+  be passed through unchanged.  Note that they do {\em not} count when
+  matching the text to the keyword.  For example, if we change our
+  original input message to ``Meet me, at midnight!'' we get ``Ryqu
+  xi, fn yjornatu!'' like this:
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+  Plaintext: &  M&e&e&t& &m&e&,& &a&t& &m&i&d&n&i&g&h&t&!  \\\hline
+  Keyword: &    F&U&M&B& &L&E& & &F&U& &M&B&L&E&F&U&M&B&  \\\hline
+  Ciphertext: & R&y&q&u& &x&i&,& &f&n& &y&j&o&r&n&a&t&u&! \\\hline
+\end{tabular}
 
   Use the table of English letter frequencies found in
   Wikipedia: {\url{https://en.wikipedia.org/wiki/Letter_frequency}}
 
+  
 
   
 \item[General coding instructions:]  Follow decent style
   recommendations,
   such as that found in your CSCI 145 book or in
   \url{https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md}
+
 
   \newpage
   
