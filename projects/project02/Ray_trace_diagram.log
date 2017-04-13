@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.31)  10 APR 2017 15:24
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Ray_trace_diagram.pdf_tex
+(./Ray_trace_diagram.pdf_tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
+! Undefined control sequence.
+<argument> \includegraphics 
+                            [width=\unitlength ,page=1]{Ray_trace_diagram.pdf}
+l.52 ...unitlength,page=1]{Ray_trace_diagram.pdf}}
+                                                  %
+? x
+ 
+Here is how much of TeX's memory you used:
+ 14 strings out of 494910
+ 261 string characters out of 6179836
+ 45442 words of memory out of 5000000
+ 3405 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 8i,2n,6p,162b,57s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
