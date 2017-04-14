@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
-\usepackage{hyperref,fancyvrb}
+\usepackage{hyperref,fancyvrb,amsmath}
 \usepackage{tikz}
 
 \newcommand{\mydot}[1]{\draw[fill] (#1) circle (0.1);}
@@ -12,6 +12,8 @@
 \begin{document}
 
 \maketitle
+
+\centerline{\bf Note:  This is still incomplete.}
 
 \centerline{\includegraphics[scale=0.5]{testmain.png}}
 
@@ -47,8 +49,8 @@ of the following things:
 \begin{enumerate}
 \item{\bf A camera:} This is just a point in space, $p$.  To make the math
   a little simpler, we will assume that this point is on the $z$ axis,
-  at point $p=(0,0,c)$. In the program, the constant $c$ will be
-  called the \verb|CAMERA_DISTANCE|, and we will assume $c > 0$.
+  at point $p=(0,0,d)$. In the program, the constant $d$ will be
+  called the \verb|CAMERA_DISTANCE|, and we will assume $d > 0$.
 \item{\bf An image plane:} This is a flat rectangular region of space in
   front of the camera.  Each grid point on the image plane will
   determine a color for a pixel in the image.  To simplify the math,
@@ -132,9 +134,7 @@ of the following things:
     we can find the intersection point as
 follows (refer to Figure \ref{intersectingraysphere}).
 We need to solve the equation, for some value of $t$
-(skip the math if you're not interested):\footnote{
-  We use the {\em dot product}: $(x_1,y_1,z_1)\cdot(x_2,y_2,z_2) =
-  x_1x_2 + y_1y_2 + z_1z_2$.}
+(skip the math if you're not interested):
 \[
 |p + tv|^2 = r^2
 \]
@@ -219,7 +219,7 @@ n = \mbox{normalize}(p-c)
 To find the cosine of the angle between two normalized vectors, simply
 take the dot product.
 \[
-\cos(n,\ell) = n \cdot \ell
+\cos(\mbox{angle}(n,\ell)) = n \cdot \ell
 \]
 In this case, if the cosine is negative, we want the color to be
 black, so any result that is negative is replaced with zero.
@@ -248,6 +248,24 @@ Note that this only works if both $n$ and $\ell$ are normalized.
   extremely exaggerated perspective.  Place all the spheres near the
   image plane (in the $(\pm s, \pm s, \pm s)$ cube), or you won't see
   them in the image.
+
+\item[World files:]  Input to this program will be the description of
+  a world.  Output will simply be the graphical display.
+
+  The world description will be in a file, which will give the camera
+  position, the light direction, and the spheres.  Here is an example
+  world file, it puts the camera at 20 units along the $z$ axis, the
+  light at $\mbox{normalized(1,1,1)}$, and a red sphere of radius 3 at
+  $(2,2,-1)$, a green sphere of radius 3 at $(2,-2,0)$, and a blue
+  sphere of radius 2 at $(-2,0,1)$.
+
+  \begin{Verbatim}[frame=single,label=myworld.wrl]
+camera: 20
+light: 0.577 0.577 0.577
+sphere:  2.0  2.0 -1.0 3.0 1.0 0.0 0.0
+sphere:  2.0 -2.0  0.0 3.0 0.0 1.0 0.0
+sphere: -2.0  0.0  1.0 2.0 0.0 0.0 1.0
+\end{Verbatim}
 
 \item[Optimizing the ray tracing:]  This is done in two phases,
   calculating the bounding boxes for the spheres, and then inserting
@@ -394,7 +412,18 @@ bounding boxes that intersect this ray.
 
 \end{description}
 
-  
+
+\item[Vector operations needed:]
+  \begin{align*}
+    v + w &= (v_x+w_x, v_yw_y, v_zw_z) &\mbox{sum of two vectors}\\
+    av &= (av_x, av_y, av_z) & \mbox{product of a scalar and a
+      vector}\\
+    v \cdot w &= v_xw_x + v_yw_y + v_zw_z &\mbox{dot product of two
+      vectors}\\
+    |v| &= \sqrt{v\cdot v} &\mbox{length of a vector}\\
+    \mbox{normalized}(v) &= \frac{v}{|v|} &\mbox{vector in the same
+      direction with unit length}
+    \end{align*}
 
 
 \item[Sample images using only spheres.]\mbox{}
