@@ -132,32 +132,44 @@ of the following things:
   \item Line 4.    
     Given a ray, $(p,v)$  and a sphere $(c,r)$,
     we can find the intersection point as
-follows (refer to Figure \ref{intersectingraysphere}).
+    follows (refer to Figure \ref{intersectingraysphere}).
+
+    The math to follow will be
+    much simpler if we assume that the sphere is centerd on the
+    origin.  We can do that if we move both the ray and the sphere by
+    the same translation.  If we subtract $c$ from each, $c$ is moved
+    to the origin, $c$ is moved to $c-c = (0,0,0)$, and $p$ is moved to
+    \[{q} = p-c\]   Note in the math below that we use ${q}$,
+    not $p$ (in the picture, imagine $p$ replaced with ${q}$).
+
 We need to solve the equation, for some value of $t$
 (skip the math if you're not interested):
 \[
-|p + tv|^2 = r^2
+|{q} + tv|^2 = r^2
 \]
 We can do this as follows.
 \begin{eqnarray*}
-|p+tv|^2 &=& (p+tv)\cdot(p+tv)\\
-&=& \sum_i (p_i + tv_i)(p_i + tv_i)\\
-&=& \sum_i \left(p_i^2 + 2p_iv_it + v_i^2t^2\right)\\
-&=& \sum_i p_i^2 + 2\sum_ip_iv_it + \sum_iv_i^2t^2\\
-&=& (p\cdot p) + 2(p\cdot v) t+ (v\cdot v) t^2
+|{q}+tv|^2 &=& ({q}+tv)\cdot({q}+tv)\\
+&=& \sum_i ({q}_i + tv_i)({q}_i + tv_i)\\
+&=& \sum_i \left({q}_i^2 + 2{q}_iv_it + v_i^2t^2\right)\\
+&=& \sum_i {q}_i^2 + 2\sum_i{q}_iv_it + \sum_iv_i^2t^2\\
+&=& ({q}\cdot {q}) + 2({q}\cdot v) t+ (v\cdot v) t^2
 \end{eqnarray*}
 So, in the quadratic $at^2 + bt + c = 0$,
-\begin{eqnarray*}
-a &=& v\cdot v \ \ \ (= 1, \mbox{why?})\\
-b &=& 2p\cdot v\\
-c &=& p\cdot p - r^2
-\end{eqnarray*}
+\begin{align*}
+a &= v\cdot v  & (= 1, \mbox{why?})\\
+b &= 2{q}\cdot v\\
+c &= {q}\cdot {q} - r^2
+\end{align*}
 The two solutions to this quadratic will give you two values of $t$ to
 plug into the expression
 \[
 p + tv
 \]
-where $(p,v)$ is your ray.  This will give you the two intersection
+where $(p,v)$ is your ray.   Note that when we
+plug $t$ back into the ray, we use $p$, not ${q}$!
+
+This will give you the two intersection
 points on the sphere, as in Figure \ref{intersectingraysphere}.  Pick
 the one closest to the camera; it will have the smallest $t$ value
 (why?).
@@ -183,7 +195,8 @@ the one closest to the camera; it will have the smallest $t$ value
 \end{figure}
 
 
-\item Line 5.  The closest intersection point will have the largest
+\item Line 5.  The closest intersection point of all the spheres
+  will have the largest
   $z$ value (why?).
 
 \item Line 10.
