@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.31)  17 APR 2017 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.31)  17 APR 2017 10:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,48 +664,48 @@ Package pdftex.def Info: Ray_trace_diagram.png used on input line 55.
 <threeflatspheres.png, id=44, 513.92pt x 513.92pt>
 File: threeflatspheres.png Graphic file (type png)
  <use threeflatspheres.png>
-Package pdftex.def Info: threeflatspheres.png used on input line 227.
+Package pdftex.def Info: threeflatspheres.png used on input line 231.
 (pdftex.def)             Requested size: 256.95937pt x 256.95937pt.
 
 <threelambertianspheres.png, id=45, 513.92pt x 513.92pt>
 File: threelambertianspheres.png Graphic file (type png)
 
 <use threelambertianspheres.png>
-Package pdftex.def Info: threelambertianspheres.png used on input line 233.
+Package pdftex.def Info: threelambertianspheres.png used on input line 237.
 (pdftex.def)             Requested size: 256.95937pt x 256.95937pt.
  [3] [4 <./threeflatspheres.png (PNG copy)>]
 [5 <./threelambertianspheres.png (PNG copy)>] [6] [7]
 <randomspheres.png, id=73, 602.25pt x 602.25pt>
 File: randomspheres.png Graphic file (type png)
  <use randomspheres.png>
-Package pdftex.def Info: randomspheres.png used on input line 463.
+Package pdftex.def Info: randomspheres.png used on input line 467.
 (pdftex.def)             Requested size: 301.12425pt x 301.12425pt.
 
 <ring01.png, id=74, 602.25pt x 602.25pt>
 File: ring01.png Graphic file (type png)
  <use ring01.png>
-Package pdftex.def Info: ring01.png used on input line 465.
+Package pdftex.def Info: ring01.png used on input line 469.
 (pdftex.def)             Requested size: 301.12425pt x 301.12425pt.
  [8 <./randomspheres.png>] <ring03.png, id=79, 602.25pt x 602.25pt>
 File: ring03.png Graphic file (type png)
  <use ring03.png>
-Package pdftex.def Info: ring03.png used on input line 467.
+Package pdftex.def Info: ring03.png used on input line 471.
 (pdftex.def)             Requested size: 301.12425pt x 301.12425pt.
 
 <ring02.png, id=80, 602.25pt x 602.25pt>
 File: ring02.png Graphic file (type png)
  <use ring02.png>
-Package pdftex.def Info: ring02.png used on input line 469.
+Package pdftex.def Info: ring02.png used on input line 473.
 (pdftex.def)             Requested size: 301.12425pt x 301.12425pt.
  [9 <./ring01.png> <./ring03.png>] [10 <./ring02.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 476.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 476.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
  (./project02.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 476.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 476.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 480.
 Package rerunfilecheck Info: File `project02.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 476.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 480.
  ) 
 Here is how much of TeX's memory you used:
  16473 strings out of 494910
@@ -727,7 +727,7 @@ sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 >
-Output written on project02.pdf (10 pages, 1681547 bytes).
+Output written on project02.pdf (10 pages, 1680462 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream

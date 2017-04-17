@@ -62,20 +62,22 @@ tree structure to improve the speed of the rendering.
 
 \item[The world:]
   
-The world we need to represent (see Figure \ref{raytracing}), consists
+  The world we need to represent (see Figure \ref{raytracing}),
+  will be represented by a Java object, consisting
 of the following things:
 \begin{enumerate}
 \item{\bf A camera:} This is just a point in space, $p$.  To make the math
   a little simpler, we will assume that this point is on the $z$ axis,
-  at point $p=(0,0,d)$. In the program, the constant $d$ will be
-  called the \verb|CAMERA_DISTANCE|, and we will assume $d > 0$.
+  at point $p=(0,0,d)$. In the program, the distance $d$ will be
+  the instance variable   \verb|cameraDistance|, and we will assume $d
+  > 0$. 
 \item{\bf An image plane:} This is a flat rectangular region of space in
   front of the camera.  Each grid point on the image plane will
   determine a color for a pixel in the image.  To simplify the math,
   again, we will assume our image plane is a square centered in the
   $(x,y)$ plane, so that its corners are at $(\pm s , \pm s, 0)$.  In
-  the program, the constant $s$ will be called the
-  \verb|IMAGE_PLANE_ZIZE|.
+  the program, the size $s$ will be the instance variable
+  \verb|imagePlaneSize|.
 \item{\bf A light source:} We will assume only one light source, and we
   will assume that it is so distant, that it appears to be in the same
   direction no matter where you are in the world.  It will be
@@ -84,14 +86,16 @@ of the following things:
     normalized}, that is, it's length is one: $\sqrt{\ell_x^2 +
     \ell_y^2 + \ell_z^2} = 1$.  For example, one light source could be
   $\ell = (1/\sqrt{3},1/\sqrt{3},1/\sqrt{3})$.  In the program, the
-  light will be represented by the constant \verb|LIGHT|.
+  light will be represented by the instance variable
+  \verb|lightDirection|. 
 \item{\bf Objects:} Objects in the scene to be rendered.  For our
   purposes, the only objects we will render will be {\em spheres},
   which are represented by a data structure that holds a 3D point for
   the center, $c$, and a real number $r$, for the radius.  We will
   want to include many spheres, so you will need to use some kind of a
   container for the spheres.  A linear structure is fine, since we
-  will just be iterating over them.
+  will just be iterating over them.  In the program, the spheres will
+  be represented by the instance variable \verb|objectList|.
 
   Spheres will also have a {\em color}, which will be a vector of
   three floats giving the red, green, and blue components of the color
@@ -130,7 +134,7 @@ of the following things:
     to map pixels in the 2D image to points in the image plane.  
     The integer pixel $(u,v)$ will be mapped to the
     following 3D point on the image plane, with
-    $s=$ \verb|IMAGE_PLANE_SIZE|: 
+    $s=$ \verb|imagePlaneSize|: 
     \begin{eqnarray*}
     \mbox{image\_plane}(u,v) &=&
     (s(2u/w-1), -s(2v/h-1), 0)\\
