@@ -318,11 +318,11 @@ This is the probability for all values less than or equal to $z$,
 under the assumption of a normal distribution.
 This only works for positive values of $z$, so we take the absolute
 value of our $z$ before calculating $\Phi(z)$.
-If this number, $\Phi(z)$, is greater than 0.95, then we have a
+If this number, $\Phi(z)$, is greater than 0.99, then we have a
 significant match.  This means that we probably have found our
 Caesar cipher.  To be conservative, we will only say that our guess is
 ``good enough'' if {\em each} of the subclasses has a probability
-greater than 0.95 of being a Caesar cipher.
+greater than 0.99 of being a Caesar cipher.
 
 Note that this brute force method to find the length of the keyword
 does not rely on Babbage's insight about repeated strings.  
