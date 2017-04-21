@@ -59,23 +59,27 @@
   partition to 1 by merging two sets at a time.
 
   We pick two adjacent cells from different sets at random, for
-  example, 4 and 9.  We remove the wall between them, merging their
-  sets and getting Figure \ref{mazefig} (b), and we now have 24 sets
-  of cells.
+  example, 4 and 9.  We put a door (remove the wall) between them,
+  merging their sets and getting Figure \ref{mazefig} (b), and we now
+  have 24 sets of cells, all the sets not including 4 or 9, and the
+  set \set{4,9}.
 
   We now pick another pair of adjacent cells at random, which are in
-  {\em different} sets, for example 3 and 4, and remove a wall between
-  them.  This merges the sets \set{3} and the set \set{4,9} into the
-  set \set{3,4,9}, and results in Figure \ref{mazefig} (c).
+  {\em different} sets, for example 3 and 4, and put a door (remove a
+  wall) between them.  This merges the sets \set{3} and the set
+  \set{4,9} into the set \set{3,4,9}, and results in Figure
+  \ref{mazefig} (c).
 
 
   Now we pick a different pair of random adjacent cells from different
-  sets, for example 20 and 21, and merge them, giving Figure
+  sets, for example 20 and 21, put a door between them and merge their
+  sets, giving Figure
   \ref{mazefig} (d).
 
 
   We continue in this fashion, each time removing a wall between two
-  random {\em adjacent} cells that are in {\em different} sets, until
+  random {\em adjacent} cells that are in {\em different} sets,
+  merging the sets,  until
   we have only one set remaining, as in Figure \ref{mazefig} (e).  
 
 
@@ -84,7 +88,9 @@ and leave an entrance at the upper left, and an
 exit at the lower right, as in Figure \ref{mazefig} (f).
   
 It is crucial that we always pick a pair of adjacent cells from {\em
-  different} sets, because otherwise our maze would have cycles in it.
+  different} sets.  If they are not adjacent putting a door between
+them makes no sense.  If they are in the same partition, our maze
+would have cycles in it.
 
 
 \item[Picking random adjacent cells:] As the algorithm progresses,
@@ -93,10 +99,10 @@ It is crucial that we always pick a pair of adjacent cells from {\em
   and longer to find a candidate to merge.  To solve this we take the
   following approach.
 
-  Before we begin, we form a complete list of all adjacent cell
-  pairs.  Each cell in the range (0\ldots n-1) is paired up with the
-  cells to the right and below it.  For example, for the cells in
-  Figure \ref{mazefig}, the list would start out looking like this:
+  Before we begin, we form a complete list of all adjacent cell pairs.
+  Each cell in the range (0\ldots n-2) is paired up with the cells to
+  the right and below it, if they exist.  For example, for the cells
+  in Figure \ref{mazefig}, the list would start out looking like this:
   \[
   ((0,1), (0,5), (1,2), (1,6), (2,3), (2,7), (3,4), (3,8), (4,9),
   (5,10), \ldots, (21,22), (22,23), (23,24) )
@@ -105,23 +111,21 @@ It is crucial that we always pick a pair of adjacent cells from {\em
   one adjacent cell, and the last cell has no adjacent cell.
 
   Now we randomize this list.  The algorithm is simple:  for each
-  cell, swap that cell with one at a random location.
+  pair of cells, swap that pair with a pair at a random location.
 
   We use this list every time we want a new pair of random cells.  We
   remove the first pair and check to see if the two cells are in
-  different partitions.  If they are in different partitions,
-  we merge the cells, and we
-  keep them in a new  list ({\em e.g.}, {\tt mergedCells}).
-  If we don't merge them (they were in the
-  same partition), we keep them in a different list ({\em e.g.}, {\tt
-    unmergedCells}). 
+  different partitions.  If they are in different partitions, we put a
+  door there and merge the partitions.  We put this pair in another
+  list ({\em e.g.}, {\tt doors}).  If we don't put a door there (they were
+  in the same partition), we keep them in a different list ({\em
+    e.g.}, {\tt walls}).
 
-  The reason we keep the cells that were {\em not} merged, is because
-  that is where all the internal walls are drawn in the final maze.
-  Having this list makes it easy to draw the final maze: draw the
-  outside border (leaving the entrance and exit open), and then draw a
-  wall segment between each pair of {\em unmerged} cells.
-
+  We can now use the list of {\tt walls} to tell us where all the
+  internal walls are drawn in the final maze.  Having this list makes
+  it easy to draw the final maze: draw the outside border (leaving the
+  entrance and exit open), and then draw a wall segment between each
+  pair of cells in the {\tt walls} list.
 
 \item[Merging  and detecting disjoint sets:]
   
@@ -129,7 +133,7 @@ Now that we have a random pair of cells, another problem is maintaining
 the partition of the cells, with the following operations as fast as
 possible: 
   \begin{itemize}
-  \item Tell if two cells are in the same partition.
+  \item Determine if two cells are in the same partition.
     \item Merge two partitions into one.
   \end{itemize}
 
@@ -139,33 +143,37 @@ an $O(n)$ process to find this out.  We can do a lot better than that.
 
   To accomplish this, wére going to use a forest of trees to represent
   the partition.  We are going to have to insert and delete trees from
-  this forest, so pick an efficient data structure for that.
+  this forest, so pick an efficient data structure for that, but the
+  order is not going to matter.
 
   We are also going to have to quickly find a node in the tree, given
   just its index, so keep an array $(0,\ldots,n-1)$ of pointers to the
-  individual nodes as well.
+  individual nodes in the forest as well.
 
 For these trees we are only going to use {\em parent} pointers, and
-they will be general trees, not binary trees.
+they will be general trees, not binary trees.  (The data structure
+looks a lot like a linked list, but we're going to use it as if it
+were a tree.)
 
   Each cell starts out in its own tree, as in Figure \ref{mergesets}
-  (a).  In order to merge cells 4 and 9, we simply make the root of one
-  the parent of the root of the other; for example as in Figure
+  (a).  In order to merge cells 4 and 9, we simply make the root of
+  one the parent of the root of the other; for example as in Figure
   \ref{mergesets} (b), where we made 9 the parent of 4.  In (c) we
-  join 3 and 4 by 
-  merging \set{3} with \set{4,9}, by making 9 the parent of 3 (since 9
-  is the root of \set{4,9}).
-  The next few merges are shown in Figure
-  \ref{mergesets} (d) to (h).  (Which cells were merged at each step?)
+  join 3 and 4 by merging \set{3} with \set{4,9}, by making 9 the
+  parent of 3 (since 9 is the root of \set{4,9}).  The next few merges
+  are shown in Figure \ref{mergesets} (d) to (h).  (Which cells were
+  merged at each step?)
 
 Clearly, given two cells, merging their sets is a fast operation.  We
-merely make the parent of one point to the other.  But what about
-determining if two cells are in the same set?
+merely find their roots, and then make the root of one be the parent
+of the other.
+
+But what about determining if two nodes are in the same partition?
 
 The beauty here is that it is going to be very fast to find the root
 of each cell's tree.  Two cells are in the same set if they have the
-same root.  For example, in Figure \ref{mergesets} (d), cells 9 and 20
-are in different sets, because $\mbox{root}(9) = 4 \not =
+same root.  For example, in Figure \ref{mergesets} (h), cells 3 and 20
+are in different sets, because $\mbox{root}(3) = 19 \not =
 21 = \mbox{root}(20) $.
 
 
