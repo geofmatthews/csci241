@@ -107,10 +107,14 @@ It is crucial that we always pick a pair of adjacent cells from {\em
   Now we randomize this list.  The algorithm is simple:  for each
   cell, swap that cell with one at a random location.
 
-  We use this list every time we want a new pair of random cells.  If
-  we merge the cells (because they were in disjoint partitions), we
-  keep them in one list, and if we don't merge them (they were in the
-  same partition), we keep them in a different list.
+  We use this list every time we want a new pair of random cells.  We
+  remove the first pair and check to see if the two cells are in
+  different partitions.  If they are in different partitions,
+  we merge the cells, and we
+  keep them in a new  list ({\em e.g.}, {\tt mergedCells}).
+  If we don't merge them (they were in the
+  same partition), we keep them in a different list ({\em e.g.}, {\tt
+    unmergedCells}). 
 
   The reason we keep the cells that were {\em not} merged, is because
   that is where all the internal walls are drawn in the final maze.
