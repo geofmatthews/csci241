@@ -86,25 +86,44 @@ exit at the lower right, as in Figure \ref{mazefig} (f).
 It is crucial that we always pick a pair of adjacent cells from {\em
   different} sets, because otherwise our maze would have cycles in it.
 
-To draw the maze after all the merging is done, we need to remember
-each pair of merged cells.  We can do this with a $n\times n$ array of
-booleans, (where $n$ is the total number of cells) initialized to {\em
-  false}.  Every time a pair of selected cells, $i$ and $j$, is
-merged, we set the $(i,j)$ component of the array to {\em true}.  We
-can then write a simple loop to draw the maze, and draw a wall between
-cell $i$ and $j$ only when the corresponding array component is {\em
-  false}, meaning the wall is still there.
+
+\item[Picking random adjacent cells:] As the algorithm progresses,
+  there will be fewer and fewer adjacent cells in different
+  partitions.  If we just pick cells at random, it will take longer
+  and longer to find a candidate to merge.  To solve this we take the
+  following approach.
+
+  Before we begin, we form a complete list of all adjacent cell
+  pairs.  Each cell in the range (0\ldots n-1) is paired up with the
+  cells to the right and below it.  For example, for the cells in
+  Figure \ref{mazefig}, the list would start out looking like this:
+  \[
+  ((0,1), (0,5), (1,2), (1,6), (2,3), (2,7), (3,4), (3,8), (4,9),
+  (5,10), \ldots, (21,22), (22,23), (23,24) )
+  \]
+  Note that some cells (on the right side and the bottom) have only
+  one adjacent cell, and the last cell has no adjacent cell.
+
+  Now we randomize this list.  The algorithm is simple:  for each
+  cell, swap that cell with one at a random location.
+
+  We use this list every time we want a new pair of random cells.  If
+  we merge the cells (because they were in disjoint partitions), we
+  keep them in one list, and if we don't merge them (they were in the
+  same partition), we keep them in a different list.
+
+  The reason we keep the cells that were {\em not} merged, is because
+  that is where all the internal walls are drawn in the final maze.
+  Having this list makes it easy to draw the final maze: draw the
+  outside border (leaving the entrance and exit open), and then draw a
+  wall segment between each pair of {\em unmerged} cells.
 
 
-
-\item[Merging sets:] It's fairly easy to find random adjacent cells
-  with a little arithmetic.  Pick a cell at random, it's just a
-  random number between 0 and $n-1$.  Now find its neighbors, which
-  are just $\pm 1$ or $\pm${\tt rowsize}.  Cells on the borders may
-  have only 2 or 3 neighbors.  Pick one of the neighbors at random.
-
-Now that we have a random pair of cells, what's harder is to maintain
-a partition of the cells, with the following fast operations:
+\item[Merging  and detecting disjoint sets:]
+  
+Now that we have a random pair of cells, another problem is maintaining
+the partition of the cells, with the following operations as fast as
+possible: 
   \begin{itemize}
   \item Tell if two cells are in the same partition.
     \item Merge two partitions into one.
@@ -146,18 +165,7 @@ are in different sets, because $\mbox{root}(9) = 4 \not =
 21 = \mbox{root}(20) $.
 
 
-\item[Checking for useless cells:]  We make one more optimization to
-  the selection of random, adjacent cells in different partitions.
 
-  When looking for a random pair of adjacent cells, we first select
-  one cell, and then examine all of its neighbors to see if one of
-  them is in a different partition.  
-
-If {\em none} of them are in a different partition, we record the fact
-that this is a useless node.  Keep an array $(0...n-1)$ of false
-booleans and every time a node is found to be useless, set its value
-to true.  Then, when we select a random node, we first check to see if
-it is useless before examining all of its neighbors.
 
 \end{description}
 
