@@ -22,15 +22,34 @@
   \begin{itemize}
     \item
       Use {\bf zip}, not tar or 7z or any other archiving software.
-      \item Zip the folder, not the individual  files in the folder.
+    \item Zip the folder, named {\tt lab01},
+      not the individual  files in the folder.
       \item Name the zip file {\tt lab01.zip}.
 \item
   Nmae the file (and class) with your {\tt main} method in it {\tt
     lab01.java}. 
-  \end{itemize}
-  
+  \end{itemize}  
+\item[My script:] My script will attempt to:
+  \begin{enumerate}
+  \item
+    unzip your files
+  \item
+    cd to the {\tt lab01} folder inside the unzipped folder
+  \item
+    copy my {\tt ciphertext.txt} to your folder
+  \item run {\tt javac *.java}
+  \item run   {\tt java lab01}
+  \item compare your output {\tt plaintext.txt} to my own solution
+  \end{enumerate}
+  Try to make your files amenable to my script.
+
+
+
 \item[Note:] To make things a little faster and easier, you may assume
   that the length of the keyword is between 5 and 10, inclusive.
+Also note that a probability of 0.999 works best for these.
+
+
 
 \item[Caesar ciphers:]
 
@@ -53,7 +72,7 @@ D&E&F&G&H&I&J&K&L&M&N&O&P&Q&R&S&T&U&V&W&X&Y&Z&A&B&C\\\hline
 }
 
 To encipher a letter, look it up in the top row, but use the letter in
-the bottom row.  For example, ``HELLO WORLD'' becomes ``KHOOR ARUOG''
+the bottom row.  For example, ``HELLO WORLD'' becomes ``KHOOR ZRUOG''
 (Klingon, I think).
 
 To decipher a message enciphered with a Caesar cipher, you need to
