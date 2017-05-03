@@ -302,6 +302,13 @@ sphere:  2.0 -2.0  0.0 3.0 0.0 1.0 0.0
 sphere: -2.0  0.0  1.0 2.0 0.0 0.0 1.0
 \end{Verbatim}
 
+Design your program so that the world file is a command line parameter, 
+the name of the world file.  For example:
+\begin{Verbatim}
+  >  javac *.java
+  >  java lab02 myworld.wrl
+\end{Verbatim}
+
 \item[Optimizing the ray tracing:]  This is done in two phases,
   calculating the bounding boxes for the spheres, and then inserting
   the spheres into a tree.
