@@ -1,0 +1,15 @@
+public class SphereList {
+    Sphere s;
+    SphereList next;
+
+    SphereList(Sphere s, SphereList next) {
+	this.s = s;
+	this.next = next;
+    }
+
+    SphereList cons(Sphere s) {
+	return new SphereList(s, this);
+    }
+}
+	
+	
