@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref,fancyvrb,amsmath}
+\usepackage{tikz}
+
+\newcommand{\mydot}[1]{\draw[fill] (#1) circle (0.1);}
+
+\title{Floyd-Warshall Illustration}
+\author{Geoffrey Matthews}
+
+\begin{document}
+
+\maketitle
+
+\begin{tikzpicture}[arrows=<,>=latex,thick,node distance=2cm]
+  \node[draw,circle] (a) {a};
+  \node[draw,circle] (b) [right of=a] {b};
+  \node[draw,circle] (c) [below of=a] {c};
+  \node[draw,circle] (d) [right of=c] {d};
+
+\end{tikzpicture}
+
+
+\end{document}

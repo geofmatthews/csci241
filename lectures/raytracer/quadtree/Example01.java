@@ -10,9 +10,9 @@
 **/
 
 /**
-Geoffrey Matthews modified this code to show how to make
-an image pixel by pixel.
-13 April 2017
+Geoffrey Matthews modified this code to do raytracing
+with optimizing quadtrees for efficient ray/sphere intersections
+May 13, 2017
 **/
 
 import java.awt.*;
@@ -25,26 +25,36 @@ public class Example01 extends Frame {
 
     public static Quadtree myWorld;
     public static Vector3 light;
-    public static int numSpheres = 100000;
-    public static int quadtreeDepth = 5;
+    public static int numSpheres = 10;
+    public static int quadtreeDepth = 3;
     
     public static void main(String args[]) {
 
-	System.out.printf("nSpheres: %d\n", numSpheres);
-	System.out.printf("qTree depth: %d\n", quadtreeDepth);
+	//	System.out.printf("nSpheres: %d\n", numSpheres);
+	//	System.out.printf("qTree depth: %d\n", quadtreeDepth);
 	myWorld = new Quadtree(-10,-10,10,10,20,quadtreeDepth);
 	for (int i = 0; i < numSpheres; i++) {
 	    myWorld.addSphere(randomSphere());
 	}
 	light = new Vector3(0.577, 0.577, 0.577);
+	printWorld(light, myWorld);
 	new Example01();
+    }
+
+    public static void printWorld(
+				  Vector3 light,
+				  Quadtree world) {
+	System.out.printf("camera: 20\n");
+	System.out.printf("light: ");
+	light.print();
+	world.printSpheres();
     }
 
     public static Sphere randomSphere() {
 	double x = Math.random() * 16.0 - 8.0;
 	double y = Math.random() * 16.0 - 8.0;
 	double z = Math.random() * 16.0 - 8.0;
-	double radius = Math.random() * 0.05 + 0.05;
+	double radius = Math.random() * 1.0 + 0.05;
 	double r = Math.random();
 	double g = Math.random();
 	double b = Math.random();

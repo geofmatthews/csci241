@@ -47,6 +47,7 @@ public class Quadtree {
 		ll.nSpheres() + lr.nSpheres();
 	}
     }
+
     public void print() {
 	for (int i = 0; i < 4-this.level; i++) System.out.print("  ");
 	System.out.printf("Quadtree level %d;  nSpheres: %d\n",
@@ -60,6 +61,16 @@ public class Quadtree {
 	}
     }
 	
+    public void printSpheres() {
+	if (this.level > 0) {
+	    this.ul.printSpheres();
+	    this.ur.printSpheres();
+	    this.ll.printSpheres();
+	    this.lr.printSpheres();
+	} else if (this.spheres != null) {
+	    this.spheres.print();
+	}
+    }
 
     // Find spheres that might intersect a ray through (x,y)
     public SphereList getSpheres(double x, double y) {

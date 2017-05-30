@@ -8,6 +8,10 @@ public class Vector3 {
         this.z = z;
     }
 
+    public void print() {
+	System.out.printf("%3.3f %3.3f %3.3f\n", this.x, this.y, this.z);
+    }
+
     double getX() { return this.x; }
     double getY() { return this.y; }
     double getZ() { return this.z; }

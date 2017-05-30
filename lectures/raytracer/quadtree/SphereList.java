@@ -7,6 +7,13 @@ public class SphereList {
 	this.next = next;
     }
 
+    public void print () {
+	this.s.print();
+	if (this.next != null) {
+	    this.next.print();
+	}
+    }
+    
     public SphereList cons(Sphere s) {
 	return new SphereList(s, this);
     }

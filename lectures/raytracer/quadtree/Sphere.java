@@ -14,6 +14,18 @@ public class Sphere {
         this.color = new Vector3(r, g, b);
     }
 
+    public void print() {
+	System.out.printf("sphere: ");
+	System.out.printf("%3.3f ", this.center.getX());
+	System.out.printf("%3.3f ", this.center.getY());
+	System.out.printf("%3.3f ", this.center.getZ());
+	System.out.printf("%3.3f ", this.radius);
+	System.out.printf("%3.3f ", this.color.getX());
+	System.out.printf("%3.3f ", this.color.getY());
+	System.out.printf("%3.3f ", this.color.getZ());
+	System.out.printf("\n");
+    }
+
     public Color shade(Vector3 point, Vector3 light) {
 	Vector3 pointNorm = point.sub(this.center).normalize();
 	float falloff = (float)pointNorm.dot(light);
